@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b4fc4">
+    <title>Expert Case de Marcat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="app-header">
+            <div class="brand-group">
+                <div class="brand-mark" aria-hidden="true">
+                    <span></span><span></span><span></span>
+                </div>
+                <div>
+                    <h1>Expert <span>Case de Marcat</span></h1>
+                    <p class="header-subtitle">Proceduri tehnice, diagnosticare și soluții organizate pe fiecare model AMEF.</p>
+                </div>
+            </div>
+            <div class="header-badge">
+                <span class="status-dot"></span>
+                Documentatie tehnica aferenta fiecarui model de AMEF
+            </div>
+        </header>
+
+        <main class="container">
+            <section class="model-section" aria-labelledby="modelsTitle">
+                <div class="section-heading">
+                    <div>
+                        <span class="section-kicker">SELECTARE ECHIPAMENT</span>
+                        <h2 id="modelsTitle">Alege producătorul casei de marcat</h2>
+                    </div>
+                    <div class="selection-summary">
+                        <span>Model activ</span>
+                        <strong id="currentModelLabel">ZIT</strong>
+                    </div>
+                </div>
+
+                <div class="models-grid" id="modelButtons">
+                    <button class="model-btn" data-model="datecs"><span class="model-index">01</span><span>DATECS</span></button>
+                    <button class="model-btn" data-model="daisy"><span class="model-index">02</span><span>DAISY</span></button>
+                    <button class="model-btn" data-model="incotex"><span class="model-index">03</span><span>INCOTEX</span></button>
+                    <button class="model-btn" data-model="tremol"><span class="model-index">04</span><span>TREMOL</span></button>
+                    <button class="model-btn" data-model="partner"><span class="model-index">05</span><span>PARTNER</span></button>
+                    <button class="model-btn active" data-model="zit"><span class="model-index">06</span><span>ZIT</span></button>
+                </div>
+            </section>
+
+            <section class="workspace">
+                <aside class="procedures-list" aria-label="Lista procedurilor">
+                    <div class="panel-head">
+                        <div>
+                            <span class="panel-kicker">BIBLIOTECĂ TEHNICĂ</span>
+                            <h3>Proceduri disponibile</h3>
+                        </div>
+                        <span class="count-badge" id="procedureCount">0</span>
+                    </div>
+
+                    <div class="search-box">
+                        <span class="search-icon" aria-hidden="true"></span>
+                        <input type="text" id="searchProcedure" placeholder="Caută o procedură..." autocomplete="off">
+                        <kbd>⌘ K</kbd>
+                    </div>
+                    <div id="proceduresList" class="procedure-items"></div>
+                </aside>
+
+                <article class="procedure-details" id="procedureDetails">
+                    <div class="empty-state">
+                        <div class="empty-illustration" aria-hidden="true">
+                            <span class="doc-line line-one"></span>
+                            <span class="doc-line line-two"></span>
+                            <span class="doc-line line-three"></span>
+                            <span class="doc-check">✓</span>
+                        </div>
+                        <span class="section-kicker">SPAȚIU DE LUCRU</span>
+                        <h2>Selectați o procedură</h2>
+                        <p>Alegeți o procedură din lista din stânga pentru a vedea instrucțiunile aferente modelului <strong>ZIT</strong>.</p>
+                        <div class="info-box">
+                            <strong>Informație tehnică</strong>
+                            <p>Aplicația păstrează separat procedurile pentru DATECS, DAISY, INCOTEX, TREMOL, PARTNER și ZIT, pentru a evita aplicarea instrucțiunilor unui model asupra altuia.</p>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </main>
+
+        <footer class="app-footer">
+            <span>Expert Case de Marcat</span>
+            <span class="footer-separator"></span>
+        </footer>
+    </div>
+
+    <script src="datecs.js"></script>
+    <script src="daisy.js"></script>
+    <script src="incotex.js"></script>
+    <script src="tremol.js"></script>
+    <script src="partner.js"></script>
+    <script src="zit.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
