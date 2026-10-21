@@ -176,6 +176,7 @@ function loadProcedureEdits() {
 }
 
 window.editProcedure = function(procedure = currentProcedure) {
+    if (!supabaseSession?.access_token) { alert('Autentifică-te în partea de jos a paginii pentru a edita procedurile.'); document.getElementById('authEmail')?.focus(); return; }
     if (!procedure || !procedureDetails[currentModel]?.[procedure]) return;
     currentProcedure = procedure;
     renderProceduresList(currentModel);
@@ -191,10 +192,10 @@ window.editProcedure = function(procedure = currentProcedure) {
       <label for="mfTools">Unelte necesare</label><textarea id="mfTools" rows="2">${escapeHtml(data.tools || '')}</textarea>
       ${errors.length ? `<label for="mfErrors">Coduri de eroare (format JSON; păstrează structura existentă)</label><textarea id="mfErrors" rows="9" spellcheck="false">${escapeHtml(JSON.stringify(errors, null, 2))}</textarea>` : ''}
       <div class="mf-actions"><button type="button" onclick="saveProcedure()">Salvează procedura</button><button type="button" class="mf-secondary" onclick="showDetails(currentProcedure)">Anulează</button></div>
-      <p class="mf-note">Modificările se salvează în acest browser, pe acest calculator. Pentru utilizare pe alte calculatoare trebuie transferate datele separat.</p>
+      <p class="mf-note">Modificările se salvează în Supabase și devin disponibile tuturor colegilor. Este necesară autentificarea pentru salvare.</p>
     </div>`;
 };
-window.saveProcedure = function() {
+window.saveProcedure = async function() {
     if (!currentProcedure) return;
     const lines = id => document.getElementById(id).value.split('\n').map(s => s.trim()).filter(Boolean);
     const original = procedureDetails[currentModel][currentProcedure];
@@ -217,9 +218,9 @@ window.saveProcedure = function() {
         }
     }
     try {
-        localStorage.setItem(procedureStorageKey(currentModel, currentProcedure), JSON.stringify(data));
+        await saveCloudProcedure(currentModel, currentProcedure, data);
     } catch (e) {
-        alert('Nu s-a putut salva în browser. Verifică setările de stocare.');
+        alert('Nu s-a putut salva în Supabase. Modificările nu au fost publicate.\n' + e.message);
         return;
     }
     procedureDetails[currentModel][currentProcedure] = data;

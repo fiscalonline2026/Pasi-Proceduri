@@ -296,3 +296,11 @@ button { -webkit-tap-highlight-color: transparent; }
 .mf-actions .mf-secondary {background:#e8f1ff; color:#0b4fc4;}
 .mf-edit-btn {margin:12px 0;}
 .mf-note {font-size:12px; color:#5e6f8b; margin-top:14px;}
+
+/* Sincronizare Supabase si autentificare */
+.supabase-status { margin: 12px auto 4px; padding: 10px 16px; max-width: 1150px; font-size: 13px; color: #185b38; background: #e9f8f0; border-radius: 9px; }
+.supabase-status.sync-error { color: #a32626; background: #fff0f0; }
+.supabase-auth { margin: 4px auto 20px; padding: 12px 16px; max-width: 1150px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 13px; }
+.supabase-auth input { min-width: 160px; padding: 8px; border: 1px solid #b7cbe9; border-radius: 8px; }
+.supabase-auth button { border: none; border-radius: 8px; background: #1253c6; color: white; padding: 9px 12px; cursor: pointer; }
+.supabase-auth [hidden] { display: none !important; }
